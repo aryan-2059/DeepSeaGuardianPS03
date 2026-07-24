@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import NavBar, { NAV_HEIGHT } from "./components/NavBar.jsx";
 import BackToTop from "./components/BackToTop.jsx";
-import OceanLife from "./components/OceanLife.jsx";
+import OceanBackground from "./components/ocean/OceanBackground.jsx";
 import CursorGlow from "./components/CursorGlow.jsx";
 import Hero from "./components/Hero.jsx";
 import QuoteBar from "./components/QuoteBar.jsx";
@@ -68,8 +68,8 @@ export default function App() {
   const station = data.coralStations.find((s) => s.name === selectedStation) || data.coralStations[0];
 
   return (
-    <>
-      <OceanLife />
+    <div className="app-content">
+      <OceanBackground />
       <CursorGlow />
       <div id="top" />
       <NavBar />
@@ -116,7 +116,7 @@ export default function App() {
       </section>
 
       <Footer />
-    </>
+    </div>
   );
 }
 
