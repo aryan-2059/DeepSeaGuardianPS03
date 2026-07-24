@@ -24,6 +24,7 @@ html, body {
   color: var(--bone);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
+  cursor: default;
 }
 
 #root {
@@ -32,6 +33,11 @@ html, body {
 
 html {
   scroll-behavior: smooth;
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -105,4 +111,59 @@ html {
 :focus-visible {
   outline: 2px solid var(--cyan);
   outline-offset: 2px;
+}
+.ocean-life-swimmer{
+    will-change: transform;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+.swim-right{
+    animation-name: swimRight;
+}
+
+.swim-left{
+    animation-name: swimLeft;
+}
+
+@keyframes swimRight{
+    from{
+        transform: translateX(-120px);
+    }
+    to{
+        transform: translateX(calc(100vw + 120px));
+    }
+}
+
+@keyframes swimLeft{
+    from{
+        transform: translateX(calc(100vw + 120px));
+    }
+    to{
+        transform: translateX(-120px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .ocean-life-swimmer{
+        animation: none;
+    }
+}
+
+.ocean-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+    linear-gradient(
+        180deg,
+        rgba(2,15,25,0.55),
+        rgba(2,20,35,0.72)
+    );
+
+    z-index:5;
+
 }
