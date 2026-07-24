@@ -5,7 +5,7 @@ import LightRays from "./LightRays";
 import PlanktonLayer from "./PlanktonLayer";
 import CurrentLayer from "./CurrentLayer";
 import CoralLayer from "./CoralLayer";
-import SeaweedLayer from "./SeaweedLayer";
+import SeaweedLayer from "./SeaWeedLayer";
 
 import "./ocean.css";
 
