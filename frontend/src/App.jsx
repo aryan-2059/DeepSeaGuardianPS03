@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "./components/NavBar.jsx";
+import NavBar, { NAV_HEIGHT } from "./components/NavBar.jsx";
+import BackToTop from "./components/BackToTop.jsx";
+import OceanLife from "./components/OceanLife.jsx";
 import CursorGlow from "./components/CursorGlow.jsx";
 import Hero from "./components/Hero.jsx";
 import QuoteBar from "./components/QuoteBar.jsx";
@@ -40,6 +42,7 @@ export default function App() {
     return (
       <>
         <NavBar />
+        <div style={{ height: NAV_HEIGHT }} />
         <div className="container" style={{ paddingTop: 80 }}>
           <p style={{ fontFamily: "var(--font-mono)", color: "var(--coral)" }}>
             ERR: {error}. Run <code>python scripts/compile_ocean_data.py</code> from the project
@@ -54,6 +57,7 @@ export default function App() {
     return (
       <>
         <NavBar />
+        <div style={{ height: NAV_HEIGHT }} />
         <div className="container" style={{ paddingTop: 80 }}>
           <p style={{ fontFamily: "var(--font-mono)", color: "var(--slate)" }}>loading survey data…</p>
         </div>
@@ -65,11 +69,14 @@ export default function App() {
 
   return (
     <>
+      <OceanLife />
       <CursorGlow />
       <div id="top" />
       <NavBar />
+      <div style={{ height: NAV_HEIGHT }} />
       <Hero stationCount={data.coralStations.length} generatedAt={data.generatedAt} />
       <QuoteBar />
+      <BackToTop />
 
       <section className="container" id="reefs" style={{ marginTop: 64 }}>
         <SectionHeading
