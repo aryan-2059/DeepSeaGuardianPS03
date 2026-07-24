@@ -6,6 +6,8 @@ const LINKS = [
   { href: "#vessels", label: "Fishing Pressure" },
 ];
 
+export const NAV_HEIGHT = 64;
+
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -18,11 +20,14 @@ export default function NavBar() {
   return (
     <nav
       style={{
-        position: "sticky",
+        position: "fixed",
         top: 0,
+        left: 0,
+        right: 0,
         zIndex: 50,
-        background: scrolled ? "rgba(10,22,34,0.82)" : "transparent",
-        backdropFilter: scrolled ? "blur(10px)" : "none",
+        height: NAV_HEIGHT,
+        background: scrolled ? "rgba(10,22,34,0.86)" : "rgba(10,22,34,0.35)",
+        backdropFilter: "blur(10px)",
         borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
         transition: "background 0.2s ease, border-color 0.2s ease",
       }}
@@ -33,7 +38,7 @@ export default function NavBar() {
           display: "flex",
           alignItems: "center",
           justifyContent: "space-between",
-          height: 64,
+          height: "100%",
         }}
       >
         <a
