@@ -20,8 +20,8 @@ export default function CursorGlow() {
     window.addEventListener("mousemove", onMove);
 
     const tick = () => {
-      current.x += (target.x - current.x) * 0.12;
-      current.y += (target.y - current.y) * 0.12;
+      current.x += (target.x - current.x) * 0.91;
+      current.y += (target.y - current.y) * 0.91;
       if (glowRef.current) {
         glowRef.current.style.transform = `translate(${current.x}px, ${current.y}px)`;
       }
