@@ -30,7 +30,17 @@ html, body {
   overflow-x: hidden;
 }
 
-a { color: var(--cyan); }
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+#reefs, #species, #vessels {
+  scroll-margin-top: 80px;
+}
 
 .container {
   max-width: 1180px;
@@ -74,6 +84,22 @@ a { color: var(--cyan); }
 /* Reduced motion respect */
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* ---------- Ambient background swimmers ---------- */
+.ocean-life-swimmer {
+  animation-name: drift-across;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes drift-across {
+  from { transform: translateX(-10vw); }
+  to   { transform: translateX(110vw); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ocean-life-layer { display: none; }
 }
 
 :focus-visible {
