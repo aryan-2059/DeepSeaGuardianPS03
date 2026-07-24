@@ -1,0 +1,82 @@
+:root {
+  --abyss: #0a1622;
+  --deep: #123b4a;
+  --panel: #0f2836;
+  --cyan: #3fd4c4;
+  --coral: #ff6b4a;
+  --amber: #f2b84b;
+  --bone: #edeae2;
+  --slate: #7f97a3;
+  --line: rgba(237, 234, 226, 0.12);
+
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  background: var(--abyss);
+  color: var(--bone);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  overflow-x: hidden;
+}
+
+a { color: var(--cyan); }
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 0 18px; }
+}
+
+/* ---------- Data-source badges (honesty layer) ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  border: 1px solid var(--line);
+}
+.badge::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+.badge--live { color: var(--cyan); border-color: rgba(63,212,196,0.35); }
+.badge--live::before { background: var(--cyan); box-shadow: 0 0 6px var(--cyan); }
+.badge--sim { color: var(--amber); border-color: rgba(242,184,75,0.35); }
+.badge--sim::before { background: var(--amber); }
+
+/* ---------- Scrollbar depth touch ---------- */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--abyss); }
+::-webkit-scrollbar-thumb { background: var(--deep); border-radius: 6px; }
+
+/* Reduced motion respect */
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+}

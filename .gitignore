@@ -1,0 +1,7 @@
+/data
+/frontend/node_modules
+node_modules
+eslint.config.js
+package-lock.json
+package.json
+vite.config.js

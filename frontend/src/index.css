@@ -1,0 +1,12 @@
+/* Vite template reset was removed here — real design tokens and layout
+   live in styles.css. Keeping this file minimal so nothing here fights
+   with it (e.g. the old #root { width: 1126px; border-inline } rule that
+   was clipping the layout into a narrow, boxed column). */
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+}
