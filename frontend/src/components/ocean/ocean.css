@@ -1,0 +1,958 @@
+/* ==========================================
+   OCEAN MASTER LAYER
+========================================== */
+
+
+.ocean-background {
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(15,70,90,0.18),
+            rgba(0,15,30,0.65)
+        );
+
+    filter: blur(1px);
+
+}
+
+.fish-layer{
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+}
+
+
+.fish-track{
+    position:absolute;
+    left:0;
+    right:0;
+}
+
+
+.swim-right{
+    display:inline-block;
+    animation-name:swimRight;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+}
+
+
+.swim-left{
+    display:inline-block;
+    animation-name:swimLeft;
+    animation-timing-function:linear;
+    animation-iteration-count:infinite;
+}
+
+
+@keyframes swimRight{
+
+    from{
+        transform:translateX(-150px);
+    }
+
+    to{
+        transform:translateX(calc(100vw + 150px));
+    }
+
+}
+
+
+@keyframes swimLeft{
+
+    from{
+        transform:translateX(calc(100vw + 150px));
+    }
+
+    to{
+        transform:translateX(-150px);
+    }
+
+}
+
+/* ==========================================
+   BUBBLES
+========================================== */
+
+
+.bubble-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+
+.bubble{
+
+    position:absolute;
+
+    bottom:-40px;
+
+    border-radius:50%;
+
+    border:1px solid rgba(160,240,255,0.45);
+
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(255,255,255,0.55),
+            rgba(255,255,255,0.05)
+        );
+
+    animation-name:bubbleRise;
+
+    animation-timing-function:
+        linear;
+
+    animation-iteration-count:
+        infinite;
+
+    will-change:
+        transform;
+
+}
+
+
+
+@keyframes bubbleRise{
+
+
+    0%{
+
+        transform:
+            translate3d(
+                0,
+                0,
+                0
+            )
+            scale(1);
+
+    }
+
+
+    25%{
+
+        transform:
+            translate3d(
+                var(--drift),
+                -25vh,
+                0
+            )
+            scale(1.05);
+
+    }
+
+
+    50%{
+
+        transform:
+            translate3d(
+                calc(var(--drift) * -0.5),
+                -55vh,
+                0
+            )
+            scale(0.95);
+
+    }
+
+
+    75%{
+
+        transform:
+            translate3d(
+                var(--drift),
+                -80vh,
+                0
+            )
+            scale(1.1);
+
+    }
+
+
+    100%{
+
+        transform:
+            translate3d(
+                0,
+                -120vh,
+                0
+            )
+            scale(1);
+
+    }
+
+}
+
+/* ==========================================
+   SUN LIGHT RAYS
+========================================== */
+
+
+.light-ray-layer{
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    right:0;
+
+    height:65%;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    perspective:800px;
+
+}
+
+
+
+.light-ray{
+
+
+    position:absolute;
+
+    top:-180px;
+
+
+    height:850px;
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(150,240,255,0.35),
+
+            rgba(80,190,255,0.08),
+
+            transparent
+
+        );
+
+
+    clip-path:
+
+        polygon(
+
+            45% 0,
+
+            55% 0,
+
+            100% 100%,
+
+            0 100%
+
+        );
+
+
+    transform-origin:
+
+        top center;
+
+
+    animation-name:
+
+        rayMove;
+
+
+    animation-timing-function:
+
+        ease-in-out;
+
+
+    animation-iteration-count:
+
+        infinite;
+
+
+    will-change:
+
+        transform,
+        opacity;
+
+}
+
+
+
+@keyframes rayMove{
+
+
+    0%{
+
+        translate:
+            0 0;
+
+        opacity:
+            0.5;
+
+    }
+
+
+    50%{
+
+        translate:
+            40px 0;
+
+        opacity:
+            1;
+
+    }
+
+
+    100%{
+
+        translate:
+            0 0;
+
+        opacity:
+            0.5;
+
+    }
+
+}
+
+/* ==========================================
+   MARINE SNOW / PLANKTON
+========================================== */
+
+
+.plankton-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+
+.plankton{
+
+
+    position:absolute;
+
+    border-radius:50%;
+
+
+    background:
+
+        rgba(180,245,255,0.9);
+
+
+    animation-name:
+
+        planktonFloat;
+
+
+    animation-timing-function:
+
+        ease-in-out;
+
+
+    animation-iteration-count:
+
+        infinite;
+
+
+    will-change:
+
+        transform;
+
+}
+
+
+
+.plankton-glow{
+
+
+    box-shadow:
+
+        0 0 8px
+        rgba(100,240,255,0.9);
+
+
+}
+
+
+
+@keyframes planktonFloat{
+
+
+    0%{
+
+        transform:
+
+            translate3d(
+                0,
+                0,
+                0
+            );
+
+    }
+
+
+    25%{
+
+        transform:
+
+            translate3d(
+                var(--drift),
+                -40px,
+                0
+            );
+
+    }
+
+
+    50%{
+
+        transform:
+
+            translate3d(
+                calc(var(--drift) * -0.5),
+                -100px,
+                0
+            );
+
+    }
+
+
+    75%{
+
+        transform:
+
+            translate3d(
+                var(--drift),
+                -160px,
+                0
+            );
+
+    }
+
+
+    100%{
+
+        transform:
+
+            translate3d(
+                0,
+                -220px,
+                0
+            );
+
+    }
+
+}
+
+/* ==========================================
+   OCEAN CURRENT LAYER
+========================================== */
+
+
+.current-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+
+.ocean-current{
+
+    position:absolute;
+
+    left:-30%;
+
+    width:160%;
+
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            transparent,
+
+            rgba(80,220,255,0.12),
+
+            rgba(120,240,255,0.18),
+
+            transparent
+
+        );
+
+
+    filter:
+
+        blur(25px);
+
+
+    border-radius:
+
+        50%;
+
+
+    animation-name:
+
+        currentFlow;
+
+
+    animation-timing-function:
+
+        ease-in-out;
+
+
+    animation-iteration-count:
+
+        infinite;
+
+
+    will-change:
+
+        transform;
+
+}
+
+
+
+@keyframes currentFlow{
+
+
+    0%{
+
+        translate:
+
+            -8% 0;
+
+        scale:
+
+            1;
+
+    }
+
+
+    50%{
+
+        translate:
+
+            8% 20px;
+
+        scale:
+
+            1.08;
+
+    }
+
+
+    100%{
+
+        translate:
+
+            -8% 0;
+
+        scale:
+
+            1;
+
+    }
+
+}
+
+/* ==========================================
+   CORAL SILHOUETTES
+========================================== */
+
+
+.coral-layer{
+
+    position:absolute;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    height:220px;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+    color:
+
+        rgba(255,150,180,0.8);
+
+}
+
+
+
+/*
+subtle coral breathing effect
+*/
+
+.coral-layer svg{
+
+    animation:
+
+        coralPulse
+        8s
+        ease-in-out
+        infinite;
+
+    transform-origin:
+
+        bottom center;
+
+}
+
+
+
+@keyframes coralPulse{
+
+
+    0%{
+
+        translate:
+            0 0;
+
+    }
+
+
+    50%{
+
+        translate:
+            0 -5px;
+
+    }
+
+
+    100%{
+
+        translate:
+            0 0;
+
+    }
+
+}
+
+/* ==========================================
+   SEAWEED LAYER
+========================================== */
+
+
+.seaweed-layer{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    right:0;
+
+    height:280px;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    color:
+
+        rgba(40,220,170,0.8);
+
+}
+
+
+
+.seaweed{
+
+    position:absolute;
+
+    bottom:-20px;
+
+    transform-origin:
+
+        bottom center;
+
+
+    animation-name:
+
+        seaweedMove;
+
+
+    animation-timing-function:
+
+        ease-in-out;
+
+
+    animation-iteration-count:
+
+        infinite;
+
+
+    animation-direction:
+
+        alternate;
+
+
+    will-change:
+
+        transform;
+
+}
+
+
+
+.seaweed span{
+
+    position:absolute;
+
+    bottom:0;
+
+    left:50%;
+
+    transform:
+
+        translateX(-50%);
+
+
+    width:100%;
+
+    height:100%;
+
+
+    border-radius:
+
+        100% 0 100% 0;
+
+
+    background:
+
+        linear-gradient(
+
+            180deg,
+
+            rgba(90,255,200,0.65),
+
+            rgba(20,120,100,0.25)
+
+        );
+
+}
+
+
+
+.seaweed span:nth-child(1){
+
+    animation:
+
+        leafWave
+        4s
+        ease-in-out
+        infinite;
+
+}
+
+
+
+.seaweed span:nth-child(2){
+
+    transform:
+
+        translateX(-70%);
+
+    opacity:0.6;
+
+    animation:
+
+        leafWave
+        5s
+        ease-in-out
+        infinite reverse;
+
+}
+
+
+
+.seaweed span:nth-child(3){
+
+    transform:
+
+        translateX(70%);
+
+    opacity:0.5;
+
+    animation:
+
+        leafWave
+        6s
+        ease-in-out
+        infinite;
+
+}
+
+
+
+@keyframes seaweedMove{
+
+
+    from{
+
+        rotate:-4deg;
+
+    }
+
+
+    to{
+
+        rotate:4deg;
+
+    }
+
+}
+
+
+
+@keyframes leafWave {
+  0% { transform: scaleX(1); }
+  50% { transform: scaleX(0.65); }
+  100% { transform: scaleX(1); }
+}
+
+/* ==========================================
+   MOUSE WATER RIPPLES
+========================================== */
+
+
+.ripple-layer{
+
+    position:absolute;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+}
+
+
+
+.water-ripple{
+
+    position:absolute;
+
+
+    width:30px;
+
+    height:30px;
+
+
+    margin-left:-15px;
+
+    margin-top:-15px;
+
+
+    border-radius:50%;
+
+
+    border:
+
+        1px solid
+
+        rgba(130,240,255,0.45);
+
+
+    animation:
+
+        rippleExpand
+
+        1.8s
+
+        ease-out
+
+        forwards;
+
+
+}
+
+
+
+@keyframes rippleExpand{
+
+
+    0%{
+
+        transform:
+
+            scale(0.2);
+
+
+        opacity:
+
+            0.7;
+
+    }
+
+
+
+    50%{
+
+        opacity:
+
+            0.35;
+
+    }
+
+
+
+    100%{
+
+        transform:
+
+            scale(6);
+
+
+        opacity:
+
+            0;
+
+    }
+
+}
